@@ -9,13 +9,13 @@ function App() {
     <Container maxWidth="xxl">
       <Grid container spacing={0} justifyContent="center" width="100%">
         <Grid item xs={12} xl={6}>
-          <img src="http://localhost:5000/video_feed/0" alt="cam_0" />
+          <img src="http://localhost:5001/video_feed/0" alt="cam_0" className='image-frame'/>
         </Grid>
         <Grid item xs={12} xl={6}>
-          <img src="http://localhost:5000/video_feed/1" alt="cam_1" />
+          <img src="http://localhost:5001/video_feed/1" alt="cam_1" className='image-frame'/>
         </Grid>
         <Grid item xs={12} xl={6}>
-          <img src="http://localhost:5000/video_feed/2" alt="cam_2" />
+          <img src="http://localhost:5001/video_feed/2" alt="cam_2" className='image-frame'/>
         </Grid>
       </Grid>
     </Container>

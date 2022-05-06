@@ -17,6 +17,10 @@
     flex-wrap: wrap;
     width: 100%;
   }
+
+  .image-frame {
+      max-width: 100%;
+  }
 }
 
 .App-header {
