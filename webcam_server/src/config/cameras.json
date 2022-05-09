@@ -1,0 +1,24 @@
+{
+    "Cameras": [
+        {
+            "Name": "Park",
+            "Address": "192.168.1.61",
+            "ID": "0",
+            "Config": {
+                "H-Flip": 0
+            }
+        },
+        {
+            "Name": "Street",
+            "Address": "192.168.1.62",
+            "ID": "1",
+            "Config": {}
+        },
+        {
+            "Name": "Workshop",
+            "Address": "192.168.1.64",
+            "ID": "2",
+            "Config": {}
+        }
+    ]
+}

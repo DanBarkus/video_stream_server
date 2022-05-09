@@ -7,20 +7,16 @@
   pointer-events: none;
 }
 
+.react-resizable-handle {
+  background-image: url('data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4NCjwhLS0gR2VuZXJhdG9yOiBBZG9iZSBJbGx1c3RyYXRvciAyNi4yLjEsIFNWRyBFeHBvcnQgUGx1Zy1JbiAuIFNWRyBWZXJzaW9uOiA2LjAwIEJ1aWxkIDApICAtLT4NCjxzdmcgdmVyc2lvbj0iMS4xIiBpZD0iTGF5ZXJfMSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgeD0iMHB4IiB5PSIwcHgiDQoJIHZpZXdCb3g9IjAgMCA2IDYiIHN0eWxlPSJlbmFibGUtYmFja2dyb3VuZDpuZXcgMCAwIDYgNjsiIHhtbDpzcGFjZT0icHJlc2VydmUiPg0KPHN0eWxlIHR5cGU9InRleHQvY3NzIj4NCgkuc3Qwe2ZpbGw6bm9uZTt9DQoJLnN0MXtvcGFjaXR5OjAuMzAyO30NCgkuc3Qye2ZpbGw6I0ZGRkZGRjt9DQo8L3N0eWxlPg0KPHBhdGggY2xhc3M9InN0MCIgZD0ieiIvPg0KPGcgY2xhc3M9InN0MSI+DQoJPHBhdGggY2xhc3M9InN0MiIgZD0iTTYsNkgwVjQuMmg0aDAuMlYwSDZWNkw2LDZ6Ii8+DQo8L2c+DQo8cGF0aCBjbGFzcz0ic3QwIiBkPSJ6Ii8+DQo8L3N2Zz4NCg==');
+}
+
 @media (prefers-reduced-motion: no-preference) {
-  .stream-frame {
-    flex-grow: 1;
-  }
-
-  .stream-holder {
-    display: flex;
-    flex-wrap: wrap;
-    width: 100%;
-  }
-
   .image-frame {
       max-width: 100%;
+      max-height: 100%;
   }
+
 }
 
 .App-header {

@@ -1,0 +1,188 @@
+{
+    "Settings": [
+        {   
+            "Name": "Clock",
+            "Type": "Slider",
+            "Min": 1,
+            "Max": 24,
+            "Default": 20,
+            "Command": "xclk?xclk="
+        },
+        {   
+            "Name": "Resolution",
+            "Type": "Slider",
+            "Min": 0,
+            "Max": 13,
+            "Default": 10,
+            "Command": "control?var=framesize&val="
+        },
+        {   
+            "Name": "Quality",
+            "Type": "Slider",
+            "Min": 1,
+            "Max": 63,
+            "Default": 4,
+            "Command": "control?var=quality&val="
+        },
+        {   
+            "Name": "Brightness",
+            "Type": "Slider",
+            "Min": -2,
+            "Max": 2,
+            "Default": 0,
+            "Command": "control?var=brightness&val="
+        },
+        {   
+            "Name": "Contrast",
+            "Type": "Slider",
+            "Min": -2,
+            "Max": 2,
+            "Default": 0,
+            "Command": "control?var=contrast&val="
+        },
+        {   
+            "Name": "Saturation",
+            "Type": "Slider",
+            "Min": -2,
+            "Max": 2,
+            "Default": 0,
+            "Command": "control?var=saturation&val="
+        },
+        {   
+            "Name": "Effect",
+            "Type": "Slider",
+            "Min": 0,
+            "Max": 6,
+            "Default": 0,
+            "Command": "control?var=special_effect&val="
+        },
+        {   
+            "Name": "Auto_WB",
+            "Type": "Toggle",
+            "Min": 0,
+            "Max": 1,
+            "Default": 1,
+            "Command": "control?var=awb&val="
+        },
+        {   
+            "Name": "WB_Mode",
+            "Type": "Slider",
+            "Min": 0,
+            "Max": 4,
+            "Default": 0,
+            "Command": "control?var=wb_mode&val="
+        },
+        {   
+            "Name": "AEC",
+            "Type": "Toggle",
+            "Min": 0,
+            "Max": 1,
+            "Default": 0,
+            "Command": "control?var=aec&val="
+        },
+        {   
+            "Name": "Exposure",
+            "Type": "Slider",
+            "Min": 0,
+            "Max": 1200,
+            "Default": 240,
+            "Command": "control?var=aec_value&val="
+        },
+        {   
+            "Name": "AEC_DSP",
+            "Type": "Toggle",
+            "Min": 0,
+            "Max": 1,
+            "Default": 0,
+            "Command": "control?var=aec2&val="
+        },
+        {   
+            "Name": "AEC_Level",
+            "Type": "Slider",
+            "Min": -2,
+            "Max": 2,
+            "Default": 0,
+            "Command": "control?var=ae_level&val="
+        },
+        {   
+            "Name": "Auto_Gain",
+            "Type": "Toggle",
+            "Min": 0,
+            "Max": 1,
+            "Default": 1,
+            "Command": "control?var=agc&val="
+        },
+        {   
+            "Name": "Gain_Ceiling",
+            "Type": "Slider",
+            "Min": 0,
+            "Max": 6,
+            "Default": 0,
+            "Command": "control?var=gainceiling&val="
+        },
+        {   
+            "Name": "AGC_Value",
+            "Type": "Slider",
+            "Min": 0,
+            "Max": 30,
+            "Default": 0,
+            "Command": "control?var=agc_gain&val="
+        },
+        {   
+            "Name": "BPC",
+            "Type": "Toggle",
+            "Min": 0,
+            "Max": 1,
+            "Default": 1,
+            "Command": "control?var=bpc&val="
+        },
+        {   
+            "Name": "WPC",
+            "Type": "Toggle",
+            "Min": 0,
+            "Max": 1,
+            "Default": 1,
+            "Command": "control?var=wpc&val="
+        },
+        {   
+            "Name": "Raw_GMA",
+            "Type": "Toggle",
+            "Min": 0,
+            "Max": 1,
+            "Default": 1,
+            "Command": "control?var=raw_gma&val="
+        },
+        {   
+            "Name": "Lens_Correction",
+            "Type": "Toggle",
+            "Min": 0,
+            "Max": 1,
+            "Default": 1,
+            "Command": "control?var=lenc&val="
+        },
+        {   
+            "Name": "H_Mirror",
+            "Type": "Toggle",
+            "Min": 0,
+            "Max": 1,
+            "Default": 1,
+            "Command": "control?var=hmirror&val="
+        },
+        {   
+            "Name": "V_Mirror",
+            "Type": "Toggle",
+            "Min": 0,
+            "Max": 1,
+            "Default": 1,
+            "Command": "control?var=vflip&val="
+        },
+        {   
+            "Name": "DCW",
+            "Type": "Toggle",
+            "Min": 0,
+            "Max": 1,
+            "Default": 1,
+            "Command": "control?var=dcw&val="
+        }
+    ]
+}
