@@ -9,7 +9,8 @@ app = Flask(__name__)
 URL_1 = "http://192.168.1.61:81/stream"
 URL_2 = "http://192.168.1.62:81/stream"
 URL_3 = "http://192.168.1.64:81/stream"
-PATH = "./images/"
+URL_4 = "http://192.168.1.51:81/stream"
+PATH = "Z:/My Videos/esp_lapses/Day 2/images/"
 im_num = 0
 CAPTURING = False
 
@@ -26,21 +27,23 @@ def index():
     return render_template('index.html')
 
 def gen(camera, folder):
-    im_num = 0
-    last_num = 0
-    for filename in os.listdir(PATH+str(folder)):
-        f = filename
-        last_num = extract_number(f)
-        if last_num > im_num:
-            im_num = last_num
-    im_num += 1
-    print(im_num)
+    if CAPTURING:
+        im_num = 0
+        last_num = 0
+        for filename in os.listdir(PATH+str(folder)):
+            f = filename
+            last_num = extract_number(f)
+            if last_num > im_num:
+                im_num = last_num
+        im_num += 1
+        print(im_num)
     while True:
         ret, frame = camera.read()
         if(ret):
-            frame_num = str(im_num).zfill(6)
-            # cv2.imwrite(PATH+str(folder)+'/'+frame_num+'.jpg',frame)
-            im_num += 1
+            if CAPTURING:
+                frame_num = str(im_num).zfill(6)
+                cv2.imwrite(PATH+str(folder)+'/'+frame_num+'.jpg',frame)
+                im_num += 1
             _, image = cv2.imencode('.jpeg', frame)
             image = image.tobytes()
             yield (b'--frame\r\n'
@@ -57,6 +60,9 @@ def video_feed(num):
     elif num == "2":
         capture = cv2.VideoCapture(URL_3)
         folder = "003"
+    elif num == "3":
+        capture = cv2.VideoCapture(URL_4)
+        folder = "004"
 
     return Response(gen(capture, folder),
                     mimetype='multipart/x-mixed-replace; boundary=frame')

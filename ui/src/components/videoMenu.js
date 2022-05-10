@@ -3,12 +3,14 @@ import Switch from '@mui/material/Switch';
 import Slider from '@mui/material/Slider';
 import Stack from '@mui/material/Stack';
 
+import './videoMenu.css';
+
 import configOutline from "../config/camera_settings.json"
 
 function VideoMenu(cameraConfig) {
     return(
         <div>
-            <Stack spacing={2} direction="row" sx={{ mb: 1 }} alignItems="center">
+            <Stack spacing={2} direction="row" sx={{ mb: 1 }} alignItems="center" className='camera-settings'>
                 <FormGroup>
                     {configOutline.Settings.map(function(setting){
                         switch(setting.Type) {
