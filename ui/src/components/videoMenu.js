@@ -5,12 +5,12 @@ import Stack from '@mui/material/Stack';
 
 import './videoMenu.css';
 
-import configOutline from "../config/camera_settings.json"
+// import configOutline from "../config/camera_settings.json"
 
 function VideoMenu(cameraConfig) {
     return(
         <div>
-            <Stack spacing={2} direction="row" sx={{ mb: 1 }} alignItems="center" className='camera-settings'>
+            {/* <Stack spacing={2} direction="row" sx={{ mb: 1 }} alignItems="center" className='camera-settings'>
                 <FormGroup>
                     {configOutline.Settings.map(function(setting){
                         switch(setting.Type) {
@@ -31,7 +31,7 @@ function VideoMenu(cameraConfig) {
                         }
                     })}  
                 </FormGroup>
-            </Stack>
+            </Stack> */}
         </div>
     );
 }
