@@ -9,10 +9,6 @@ from flask_cors import CORS
 app = Flask(__name__)
 CORS(app)
 
-URL_1 = "http://192.168.1.61:81/stream"
-URL_2 = "http://192.168.1.62:81/stream"
-URL_3 = "http://192.168.1.64:81/stream"
-URL_4 = "http://192.168.1.51:81/stream"
 PATH = "Z:/My Videos/esp_lapses/Day 2/images/"
 CAMERAS_FILE = "../config/cameras.json"
 CAMERAS = []
@@ -31,7 +27,6 @@ def get_cameras():
     with open(CAMERAS_FILE, 'r') as cf:
         cameras = json.load(cf)
         cameras = cameras["Cameras"]
-    print(cameras)
     return(cameras)
 
 CAMERAS = get_cameras()
@@ -65,20 +60,10 @@ def gen(camera, folder):
 
 @app.route('/video_feed/<num>')
 def video_feed(num):
-    get_cameras()
-    url = next(x for x in CAMERAS)
-    if num == "0":
-        capture = cv2.VideoCapture(URL_1)
-        folder = "001"
-    elif num == "1":
-        capture = cv2.VideoCapture(URL_2)
-        folder = "002"
-    elif num == "2":
-        capture = cv2.VideoCapture(URL_3)
-        folder = "003"
-    elif num == "3":
-        capture = cv2.VideoCapture(URL_4)
-        folder = "004"
+    camera = next(cam for cam in CAMERAS if cam["ID"] == num)
+    url = "http://"+ camera["Address"] + ":81/stream"
+    folder = camera["ID"].zfill(3)
+    capture = cv2.VideoCapture(url)
 
     return Response(gen(capture, folder),
                     mimetype='multipart/x-mixed-replace; boundary=frame')

@@ -1,5 +1,5 @@
 // import logo from './logo.svg';
-import * as React from 'react';
+import React, { useState } from 'react';
 import Container from '@mui/material/Container';
 import {Responsive, WidthProvider} from "react-grid-layout";
 
@@ -10,32 +10,73 @@ import './components/App.css';
 
 import { useEffect } from 'react';
 
-
 function App() {
 
   const ResponsiveGridLayout = WidthProvider(Responsive);
-  const [isLoaded, setIsLoaded] = React.useState(false);
-  const [cameras, setcameras] = React.useState([]);
+  const [isLoaded, setIsLoaded] = useState(false);
+  const [cameras, setcameras] = useState([]);
+  const [layout, setLayout] = useState([]);
   const breakpoints = { lg: 2400, md: 1800, sm: 900, xs:600};
   const cols = { lg: 8, md: 6, sm: 4, xs: 2};
-  // const height = { md: 900, sm: 600, xs: 300 };
 
-  useEffect(() => {
+  const getFromLS = (key) => {
+    let ls = {};
+    if (global.localStorage) {
+      try {
+        ls = JSON.parse(global.localStorage.getItem("rgl-7")) || {};
+        console.log(ls);
+      } catch (e) {
+        /*Ignore*/
+      }
+    }
+    return ls[key];
+  }
+  
+  const saveToLS = (key, value) => {
+    if (global.localStorage) {
+      console.log(value);
+      global.localStorage.setItem(
+        "rgl-7",
+        JSON.stringify({
+          [key]: value
+        })
+      );
+    }
+  }
+  
+  const onLayoutChange = (layout) => {
+    saveToLS("layout", layout);
+  }
+
+  const originalLayout = getFromLS("layout") || [];
+
+  const setup = () => {
+    console.log("doing setup");
     if (!isLoaded) {
       fetch('http://localhost:5001/cameras')
       .then(res => res.json())
       .then((result) => {
-        setIsLoaded(true);
         setcameras(result);
       });
+      setIsLoaded(true);
+      setLayout(JSON.parse(JSON.stringify(originalLayout)));
     }
-  })
+  }
 
-  if (isLoaded) {
+  if (!isLoaded) {
+    setup()
+  }
+  else {
     console.log(cameras);
     return (
       <Container maxWidth="xxl">
-        <ResponsiveGridLayout cols={cols} breakpoints={breakpoints} compactionType={'horizantal'}>
+        <ResponsiveGridLayout 
+          cols={cols}
+          breakpoints={breakpoints}
+          compactionType={'horizantal'}
+          layout={layout}
+          onLayoutChange={onLayoutChange}
+        >
           {
             cameras.map((camera) => {
               return (
@@ -57,5 +98,7 @@ function App() {
     );
   }
 }
+
+
 
 export default App;
