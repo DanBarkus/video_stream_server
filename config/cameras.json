@@ -15,14 +15,14 @@
             "Config": {}
         },
         {
-            "Name": "Workshop",
-            "Address": "192.168.1.64",
+            "Name": "Driveway",
+            "Address": "192.168.1.52",
             "ID": "2",
             "Config": {}
         },
         {
-            "Name": "Plants",
-            "Address": "192.168.1.51",
+            "Name": "Berries",
+            "Address": "192.168.1.64",
             "ID": "3",
             "Config": {}
         }

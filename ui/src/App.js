@@ -24,7 +24,7 @@ function App() {
     if (global.localStorage) {
       try {
         ls = JSON.parse(global.localStorage.getItem("rgl-7")) || {};
-        console.log(ls);
+        // console.log(ls);
       } catch (e) {
         /*Ignore*/
       }
@@ -34,7 +34,7 @@ function App() {
   
   const saveToLS = (key, value) => {
     if (global.localStorage) {
-      console.log(value);
+      // console.log(value);
       global.localStorage.setItem(
         "rgl-7",
         JSON.stringify({
@@ -52,51 +52,49 @@ function App() {
 
   const setup = () => {
     console.log("doing setup");
-    if (!isLoaded) {
-      fetch('http://localhost:5001/cameras')
+    fetch('http://localhost:5001/cameras')
       .then(res => res.json())
       .then((result) => {
         setcameras(result);
-      });
-      setIsLoaded(true);
-      setLayout(JSON.parse(JSON.stringify(originalLayout)));
-    }
+        // setIsLoaded(true);
+        console.log(result);
+    });
+    setLayout(JSON.parse(JSON.stringify(originalLayout)));
   }
 
-  if (!isLoaded) {
+  useEffect(() => {
     setup()
-  }
-  else {
-    console.log(cameras);
-    return (
-      <Container maxWidth="xxl">
-        <ResponsiveGridLayout 
-          cols={cols}
-          breakpoints={breakpoints}
-          compactionType={'horizantal'}
-          layout={layout}
-          onLayoutChange={onLayoutChange}
-        >
-          {
-            cameras.map((camera) => {
-              return (
-                <div key={camera.ID} data-grid={{w:2, h:4, x:0, y:0}}>
-                  <img src={'http://localhost:5001/video_feed/'+camera.ID} alt={'cam_'+camera.ID} className='image-frame'/>
-                  {/* <>
-                    {isShow ?
-                      <VideoMenu cameraConfig={camera.Config}/>
-                    :
-                      <></>
-                    }
-                  </> */}
-                </div>
-              )
-            })
-          }
-        </ResponsiveGridLayout>
-      </Container>
-    );
-  }
+  }, [])
+
+  
+  return (
+    <Container maxWidth="xxl">
+      <ResponsiveGridLayout 
+        cols={cols}
+        breakpoints={breakpoints}
+        compactionType={'horizantal'}
+        layout={layout}
+        onLayoutChange={onLayoutChange}
+      >
+        {
+          cameras.map((camera) => {
+            return (
+              <div key={camera.ID} data-grid={{w:2, h:4, x:0, y:0}}>
+                <img src={'http://localhost:5001/video_feed/'+camera.ID} alt={'cam_'+camera.ID} className='image-frame'/>
+                {/* <>
+                  {isShow ?
+                    <VideoMenu cameraConfig={camera.Config}/>
+                  :
+                    <></>
+                  }
+                </> */}
+              </div>
+            )
+          })
+        }
+      </ResponsiveGridLayout>
+    </Container>
+  );
 }
 
 
